@@ -1,24 +1,26 @@
 <?php
 session_start();
 
-if (isset($_GET['page'])) :
-  $p = $_GET['page'];
+if (isset($_GET['p'])) :
+  $p = $_GET['p'];
 else :
-  $p = '/';
+  $p = 'home';
 endif;
 
 
-// ob_start();
-if ($p === '/') :
-  require 'views/acceuil.php';
+ob_start();
+if ($p === 'home') :
+  $css = 'acceuil';
+  $js = 'acceuil';
+  require '../models/acceuil/acceuil.php';
 elseif ($p === 'loginuser') :
-  require 'views/login.php';
+  $css = 'login';
+  require '../models/acceuil/login.php';
 elseif ($p === 'contact') :
-  require 'views/contact.php';
-elseif ($p === 'adminlog') :
-  require 'views/admin.php';
-else :
-  require 'views/404.php';
+  $css = 'contact';
+  require '../models/acceuil/contact.php';
+// elseif ($p === 'adminlog') :
+//   require '../models/acceuil/login.php';
 endif;
-// $page = ob_get_clean();
-// require 'models/template/demo.php';
+$page = ob_get_clean();
+require '../models/demo/acceuil.php';

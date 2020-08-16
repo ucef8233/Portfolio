@@ -8,7 +8,7 @@ use \PDOException;
 class   Db
 // connexion a la base de donnée
 {
-  /**JKQS
+  /**
    * @return string
    */
   protected function connect()
