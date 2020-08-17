@@ -2,11 +2,6 @@
 ///require manmespace use
 use \portfolio\classes\Database\Functions;
 use \portfolio\classes\HTML\Error;
-
-///require classes
-
-require_once "../controllers/classes/Database/Functions.php";
-require_once "../controllers/classes/HTML/Error.php";
 Functions::insert('projet');
 ?>
 <div class="content">
@@ -24,13 +19,13 @@ Functions::insert('projet');
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">Mon du projet : </label>
-                    <input type="text" class="form-control" name="projet_name">
+                    <input type="text" class="form-control" name="projet_name" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">lien Github :</label>
-                    <input type="text" class="form-control" name="projet_lien">
+                    <input type="text" class="form-control" name="projet_lien" required>
                   </div>
                 </div>
               </div>
@@ -48,7 +43,7 @@ Functions::insert('projet');
                     <label>Description</label>
                     <div class="form-group">
                       <label class="bmd-label-floating"> </label>
-                      <textarea class="form-control" rows="5" name="projet_description"></textarea>
+                      <textarea class="form-control" rows="5" name="projet_description" required></textarea>
                     </div>
                   </div>
                 </div>

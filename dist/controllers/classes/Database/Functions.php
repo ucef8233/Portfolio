@@ -3,7 +3,6 @@
 
 namespace portfolio\classes\Database;
 
-require_once "Utulisateur.php";
 /**
  * @param Functions $id id select id user 
  */
@@ -32,6 +31,50 @@ class Functions
       endif;
     endif;
   }
+  /////////insertcv
+  public static function insertCv($table_name)
+  {
+    if ((isset($_POST['add_cv'])) && ($table_name == "experiance")) :
+      $date = addslashes($_POST['experiance_date']);
+      $description =  addslashes($_POST['experiance_desc']);
+      $champs = [
+        'date' => $date,
+        'description' =>  $description,
+        'info_admin' => "1"
+      ];
+      $utulisateurs = new Utulisateur;
+      $utulisateurs->insert($table_name, $champs);
+    endif;
+    if ((isset($_POST['add_etude'])) && ($table_name == "etudes")) :
+      $date = addslashes($_POST['etude_date']);
+      $description =  addslashes($_POST['etude_desc']);
+      $champs = [
+        'date' => $date,
+        'description' =>  $description,
+        'info_admin' => "1"
+      ];
+      $utulisateurs = new Utulisateur;
+      $utulisateurs->insert($table_name, $champs);
+    endif;
+    if ((isset($_POST['add_langage'])) && ($table_name == "langages")) :
+      $langage =  addslashes($_POST['langage']);
+      $champs = [
+        'langage' => $langage,
+        'info_admin' => "1"
+      ];
+      $utulisateurs = new Utulisateur;
+      $utulisateurs->insert($table_name, $champs);
+    endif;
+    if ((isset($_POST['add_softskills'])) && ($table_name == "softskills")) :
+      $softskills =  addslashes($_POST['softskills']);
+      $champs = [
+        'softskills' => $softskills,
+        'info_admin' => "1"
+      ];
+      $utulisateurs = new Utulisateur;
+      $utulisateurs->insert($table_name, $champs);
+    endif;
+  }
   /// fonction de supretion d'utulisateur 
   public static function delet($table_name, $id_table)
   {
@@ -42,7 +85,7 @@ class Functions
       if ($table_name == "projet") :
         header('location:dashboard.php');
       else :
-        header('location:dashboard.php?p=editcv&element=delet');
+        header('location:dashboard.php?p=editcv&delet=ok');
       endif;
     endif;
   }

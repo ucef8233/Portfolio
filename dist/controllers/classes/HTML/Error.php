@@ -25,7 +25,7 @@ class Error
       endif;
     endif;
   }
-  public static function valid_edit()
+  public static function valid_edit($name)
   {
     if (isset($_GET['p']) && isset($_GET['edit'])) :
       if ($_GET['edit'] == 'ok') :
@@ -33,12 +33,12 @@ class Error
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <i class="material-icons">close</i>
         </button>
-        <span> Projet modifier !</span>
+        <span> ' . $name . ' modifier !</span>
       </div>';
       endif;
     endif;
   }
-  public static function valid_delet()
+  public static function valid_delet($name)
   {
     if (isset($_GET['p']) && isset($_GET['delet'])) :
       if ($_GET['delet'] == 'ok') :
@@ -46,12 +46,12 @@ class Error
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <i class="material-icons">close</i>
         </button>
-        <span> Projet Supprimer !</span>
+        <span> ' . $name . ' Supprimer !</span>
       </div>';
       endif;
     endif;
   }
-  public static function valid_add()
+  public static function valid_add($name)
   {
     if (isset($_GET['p']) && isset($_GET['add'])) :
       if ($_GET['add'] == 'ok') :
@@ -59,7 +59,7 @@ class Error
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <i class="material-icons">close</i>
         </button>
-        <span> Projet Ajouter !</span>
+        <span> ' . $name . ' Ajouter !</span>
       </div>';
       endif;
     endif;

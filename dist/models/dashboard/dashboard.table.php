@@ -6,12 +6,6 @@ use portfolio\classes\Database\Functions;
 use portfolio\classes\HTML\Error;
 
 if (isset($_SESSION['log'])) :
-
-  //require classes
-
-  require_once "../controllers/classes/Database/Functions.php";
-  require_once "../controllers/classes/Database/Utulisateur.php";
-  require_once "../controllers/classes/HTML/Error.php";
   Functions::delet("projet", "id");
   $projets = new Utulisateur;
   $rows = $projets->select('projet');
@@ -40,9 +34,9 @@ if (isset($_SESSION['log'])) :
           <div class="card">
             <div class="card-header card-header-primary">
               <h4 class="card-title">Tableau des Projets</h4>
-              <?= Error::valid_edit(); ?>
-              <?= Error::valid_add() ?>
-              <?= Error::valid_delet() ?>
+              <?= Error::valid_edit("projet"); ?>
+              <?= Error::valid_add("projet") ?>
+              <?= Error::valid_delet("projet") ?>
             </div>
             <div class="card-body table-responsive">
               <table class="table table-hover">
@@ -59,9 +53,9 @@ if (isset($_SESSION['log'])) :
                   <!-- les projets -->
                   <?php
                   if ($rows) :
-                    foreach ($rows as $row) : ?>
+                    foreach ($rows as $key => $row) : ?>
                       <tr>
-                        <th scope="row"><?= $row['id'] ?></th>
+                        <th scope="row"><?= $key + 1 ?></th>
                         <td><img src="../html/image/<?= $row['image'] ?>" alt="image projet" width="500" height="300"></td>
                         <td><?= $row['nom'] ?></td>
                         <td><?= $row['lien'] ?></td>

@@ -2,9 +2,6 @@
 
 namespace portfolio\classes\Database;
 
-require_once "Db.php";
-// session_start();
-
 use \PDO;
 
 class Utulisateur extends Db
@@ -56,7 +53,11 @@ class Utulisateur extends Db
     endforeach;
     $stmtExec = $stmt->execute();
     if ($stmtExec) :
-      header('Location:dashboard.php?p=home&add=ok');
+      if ($table_name == "projet") :
+        header('Location:dashboard.php?p=home&add=ok');
+      else :
+        header('Location:dashboard.php?p=editcv&add=ok');
+      endif;
     endif;
   }
 
@@ -111,7 +112,7 @@ class Utulisateur extends Db
     endforeach;
     $stmtExec = $stmt->execute();
     if ($stmtExec) :
-      header('Location:dashboard.php?p=home&edit=ok');
+      header('Location:dashboard.php?p=editcv&edit=ok');
     endif;
   }
 

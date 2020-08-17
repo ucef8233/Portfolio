@@ -1,12 +1,6 @@
 <?php
-/// nemespace use 
-// use \portfolio\classes\Database\Utulisateur;
+
 use portfolio\classes\Database\Functions;
-
-// require classes
-
-require_once "../controllers/classes/Database/Functions.php";
-require_once "../controllers/classes/Database/Utulisateur.php";
 
 $result = Functions::edit('projet');
 ?>
@@ -22,18 +16,18 @@ $result = Functions::edit('projet');
           </div>
           <div class="card-body">
             <form method="POST">
-              <input class="x" type="text" name="id" value="<?= $result['id'] ?>">
+              <input class="x" type="text" name="id" value="<?= $result['id'] ?>" required>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">Mon du projet : </label>
-                    <input type="text" class="form-control" name="projet_name" value="<?= $result['nom'] ?>">
+                    <input type="text" class="form-control" name="projet_name" value="<?= $result['nom'] ?>" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">lien Github :</label>
-                    <input type="text" class="form-control" name="projet_lien" value="<?= $result['lien'] ?>">
+                    <input type="text" class="form-control" name="projet_lien" value="<?= $result['lien'] ?>" required>
                   </div>
                 </div>
               </div>

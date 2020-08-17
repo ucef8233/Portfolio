@@ -11,8 +11,25 @@
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../html/css/<?= $css ?>.css">
   <title>
-    <? $title ?>
+    <?= $title ?>
   </title>
+  <style>
+    .page404 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .page404 h1 {
+      font-size: 5em;
+    }
+
+    .page404 p {
+      font-size: 3em;
+    }
+  </style>
 </head>
 
 <body>
@@ -21,12 +38,12 @@
       <a href="index.php"> <img src="../html/image/Ysb.png" alt=""></a>
       <div class="pages__links none">
         <a href="index.php?p=contact">Contact</a>
-        <a href="<?php if (!isset($_SESSION['identifiants'])) :
+        <a href="<?php if (!isset($_SESSION['log'])) :
                     echo "index.php?p=loginuser";
                   else :
                     echo "Dashboard.php";
                   endif; ?>
-"><?php if (!isset($_SESSION['identifiants'])) :
+"><?php if (!isset($_SESSION['log'])) :
       echo "Login";
     else :
       echo "dashboard";
@@ -37,5 +54,6 @@
     <?= $page ?>
 </body>
 <script src="../html/scripts/<?= $js ?? '' ?>.js"></script>
+<script src="../html/scripts/<?= $js2 ?? '' ?>.js"></script>
 
 </html>

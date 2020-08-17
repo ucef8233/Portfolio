@@ -2,7 +2,6 @@
 
 namespace portfolio\classes\Database;
 
-require_once "Utulisateur.php";
 class Connexion_exec
 {
   public static function Cnx()

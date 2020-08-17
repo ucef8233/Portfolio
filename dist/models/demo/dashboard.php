@@ -3,11 +3,9 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard Dark Edition by Creative Tim
+    Dashboard-Portfolio
   </title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport" />
   <!--     Fonts and icons     -->
@@ -30,35 +28,50 @@
     .x {
       display: none;
     }
+
+    .page404 {
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .page404 h1 {
+      font-size: 5em;
+    }
+
+    .page404 p {
+      font-size: 3em;
+    }
   </style>
 </head>
 
 <body class="dark-edition">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
       <div class="logo"><a href="index.php" class="simple-text logo-normal">
-          Portfolio
+          <img src="../html/image/Ysb.png" alt="" width="80px">
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item <?php if (!isset($_GET['p'])) : echo "active";
+                              endif; ?>">
             <a class="nav-link" href="dashboard.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="dashboard.php?p=editcv">
+          <li class="nav-item <?php if (isset($_GET['p']) && ($_GET['p'] == "editcv")) : echo "active";
+                              endif; ?> ">
+            <a class=" nav-link" href="dashboard.php?p=editcv">
               <i class="material-icons">person</i>
               <p>Profile</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item <?php if (isset($_GET['p']) && ($_GET['p'] == "add")) : echo "active";
+                              endif; ?>  ">
             <a class="nav-link" href="dashboard.php?p=add">
               <i class="fas fa-folder-plus"></i>
               <p>Ajouter un Projet</p>
