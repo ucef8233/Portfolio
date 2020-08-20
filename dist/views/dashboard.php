@@ -1,23 +1,25 @@
 <?php
 session_start();
-require '../controllers/Autoloader.php';
+require dirname(__DIR__) . '/controllers/Autoloader.php';
 portfolio\Autoloader::register();
 if (isset($_GET['p'])) :
   $p = $_GET['p'];
 else :
   $p = 'home';
 endif;
+define('DASH_PATH', dirname(__DIR__) . '/models/dashboard');
+define('MODEL_PATH', dirname(__DIR__) . '/models');
 ob_start();
 if (($p === 'home') || ($p === 'delet')) :
-  require '../models/dashboard/dashboard.table.php';
+  require DASH_PATH . '/dashboard.table.php';
 elseif ($p === 'add') :
-  require '../models/dashboard/dashboard.add.php';
+  require DASH_PATH . '/dashboard.add.php';
 elseif ($p === 'edit') :
-  require '../models/dashboard/dashboard.edit.php';
+  require DASH_PATH . '/dashboard.edit.php';
 elseif ($p === 'editcv') :
-  require '../models/dashboard/dashboard.editcv.php';
+  require DASH_PATH . '/dashboard.editcv.php';
 else :
-  require '../models/acceuil/404.php';
+  require MODEL_PATH . '/acceuil/404.php';
 endif;
 $contenu = ob_get_clean();
-require '../models/demo/dashboard.php';
+require MODEL_PATH . '/demo/dashboard.php';

@@ -7,6 +7,8 @@ use \PDO;
 class Utulisateur extends Db
 // recuperation de tout les utulisateur de la base de donnée
 {
+  // public $table_name;
+
   /**
    * @return array tout les info de la base de donnée
    */
@@ -21,12 +23,6 @@ class Utulisateur extends Db
       return $data;
     endif;
   }
-  // SELECT info_admin.nom ,info_admin.titre,info_admin.adress, info_admin.mail, softskills.softskills ,etudes.date,etudes.description,experiance.date,experiance.description,langages.langage
-  // FROM info_admin 
-  // INNER JOIN softskills ON info_admin.id_admin = softskills.info_admin
-  // INNER JOIN etudes ON info_admin.id_admin = etudes.info_admin
-  // INNER JOIN experiance ON info_admin.id_admin = experiance.info_admin
-  // INNER JOIN langages ON info_admin.id_admin = langages.info_admin
   public function selectCv($table_name, $table_join)
   {
     $sql = "SELECT * FROM $table_name INNER JOIN $table_join ON $table_name.id_admin = $table_join.info_admin ";

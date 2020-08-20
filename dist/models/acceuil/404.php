@@ -1,5 +1,5 @@
 <?php
-$css = 'contact';
+$css = '<link rel="stylesheet" href="../html/css/contact.css">';
 $title = 'Page 404';
 ?>
 <div class="page404">

@@ -5,9 +5,10 @@
 use \portfolio\classes\Database\Connexion_exec;
 use \portfolio\classes\HTML\Error;
 
-$css = 'login';
+$css = '<link rel="stylesheet" href="../html/css/login.css">';
 $title = 'page Login';
-///require classes
+
+
 if (!isset($_SESSION['log'])) :
   Connexion_exec::Cnx();
 ?>

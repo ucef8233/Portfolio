@@ -19,8 +19,7 @@ function limite_caractere($chaine, $max = 70)
 }
 //name spase Use
 use \portfolio\classes\Database\Utulisateur;
-//require
-require_once "../controllers/classes/Database/Utulisateur.php";
+
 // 
 $projet = new Utulisateur;
 $cards = $projet->select('projet');
@@ -54,7 +53,7 @@ $cards = $projet->select('projet');
               <p><?= limite_caractere($card['description']) ?></p>
             </div>
           </div>
-          <a href="<?= $card['lien'] ?>" class="portfolio__btn">Découvrez le projet<i class="fas fa-angle-double-right"></i></a>
+          <a href="<?= $card['lien'] ?>" target="_blank" class="portfolio__btn">Découvrez le projet<i class="fas fa-angle-double-right"></i></a>
         </div>
       <?php endforeach; ?>
     <?php endif; ?>

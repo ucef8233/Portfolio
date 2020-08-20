@@ -1,9 +1,9 @@
 <?php
-$css = 'acceuil';
+$css = '<link rel="stylesheet" href="../html/css/acceuil.css">';
 $js = 'acceuil';
 $js2 = 'portfolio';
 $title = 'Page D\'acceuil';
 ?>
-<?php include '../models/include/header.php' ?>
-<?php include '../models/include/portfolio.php' ?>
-<?php include '../models/include/cv.php' ?>
+<?php require  INC_PATH . '/header.php' ?>
+<?php require  INC_PATH . '/portfolio.php' ?>
+<?php require  INC_PATH . '/cv.php' ?>

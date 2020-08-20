@@ -2,17 +2,10 @@
 // namece use
 
 use \portfolio\classes\Database\Utulisateur;
-
-
-//require classes
-
-require_once "../controllers/classes/Database/Functions.php";
-require_once "../controllers/classes/Database/Utulisateur.php";
-require_once "../controllers/classes/HTML/Error.php";
 // Functions::delet();
 $projets = new Utulisateur;
 $softskills = $projets->selectCv("info_admin", "softskills");
-$experiances = $projets->selectCv("info_admin", "experiance");
+$experiances = $projets->selectCv("info_admin", "experiances");
 $etudes = $projets->selectCv("info_admin", "etudes");
 $langages = $projets->selectCv("info_admin", "langages");
 $infos = $projets->select("info_admin");

@@ -2,6 +2,8 @@
 ///require manmespace use
 use \portfolio\classes\Database\Functions;
 use \portfolio\classes\HTML\Error;
+use \portfolio\classes\HTML\Form;
+
 Functions::insert('projet');
 ?>
 <div class="content">
@@ -16,40 +18,22 @@ Functions::insert('projet');
           <div class="card-body">
             <form method="POST">
               <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Mon du projet : </label>
-                    <input type="text" class="form-control" name="projet_name" required>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">lien Github :</label>
-                    <input type="text" class="form-control" name="projet_lien" required>
-                  </div>
-                </div>
+                <?= Form::input("6", "Mon du projet", "projet_name") ?>
+                <?= Form::input("6", "lien Github", "projet_lien") ?>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="validatedCustomFile" name="projet_image" accept="image/png, image/jpeg" required>
-                    <label class="custom-file-label" for="validatedCustomFile">Ajouter une image pour le projet</label>
+                    <label class="custom-file-label  ">Ajouter une image pour le projet</label>
+                    <input type="file" class="custom-file-input" name="projet_image" accept="image/png, image/jpeg" required>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Description</label>
-                    <div class="form-group">
-                      <label class="bmd-label-floating"> </label>
-                      <textarea class="form-control" rows="5" name="projet_description" required></textarea>
-                    </div>
-                  </div>
-                </div>
+                <?= Form::textarea("projet_description") ?>
               </div>
               <button type="submit" class="btn btn-primary pull-right" name="add">Ajouter Projet</button>
-              <div class="clearfix"></div>
+              <!-- <div class="clearfix"></div> -->
             </form>
           </div>
         </div>
