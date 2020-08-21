@@ -3,3 +3,7 @@ package.json
 package-lock.json
 dev
 node_modules
+vendor
+composer.json
+composer.lock
+dist/html/*.html
