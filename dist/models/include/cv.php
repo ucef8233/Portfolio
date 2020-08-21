@@ -1,16 +1,3 @@
-<?php
-// namece use
-
-use \portfolio\classes\Database\Utulisateur;
-// Functions::delet();
-$projets = new Utulisateur;
-$softskills = $projets->selectCv("info_admin", "softskills");
-$experiances = $projets->selectCv("info_admin", "experiances");
-$etudes = $projets->selectCv("info_admin", "etudes");
-$langages = $projets->selectCv("info_admin", "langages");
-$infos = $projets->select("info_admin");
-
-?>
 <section id="propos" class="main__propos">
   <pre class="code__propos">
 <code class="code">

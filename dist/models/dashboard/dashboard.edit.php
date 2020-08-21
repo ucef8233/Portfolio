@@ -1,9 +1,9 @@
 <?php
 
-use portfolio\classes\Database\Functions;
+
 use \portfolio\classes\HTML\Form;
 
-$result = Functions::edit('projet');
+
 ?>
 
 

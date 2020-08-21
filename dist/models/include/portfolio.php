@@ -1,29 +1,3 @@
-<?php
-/*
-function limit caractére a 70 + ajout ...
-*/
-function limite_caractere($chaine, $max = 70)
-{
-  $chaine = strip_tags($chaine);
-
-  // on compte si le nombre de caractère est supp ou égale a max
-  if (strlen($chaine) >= $max) {
-    // on prend la chaine de 0 à max
-    $chaine = substr($chaine, 0, $max);
-    // on regarde ou se trouve le dernier espace dans la chaine
-    $espace = strrpos($chaine, " ");
-    // on prend la chaine de 0 au dernier espace et on ajoute ...
-    $chaine = substr($chaine, 0, $espace) . " ...";
-  }
-  echo $chaine;
-}
-//name spase Use
-use \portfolio\classes\Database\Utulisateur;
-
-// 
-$projet = new Utulisateur;
-$cards = $projet->select('projet');
-?>
 <!-- // section portfolio -->
 <div id="portfolio" class="main__acceuil ">
   <section class="portfolio" id="port">
@@ -53,7 +27,7 @@ $cards = $projet->select('projet');
               <p><?= limite_caractere($card['description']) ?></p>
             </div>
           </div>
-          <a href="<?= $card['lien'] ?>" target="_blank" class="portfolio__btn">Découvrez le projet<i class="fas fa-angle-double-right"></i></a>
+          <a href="<?= $card['lien'] ?>" class="portfolio__btn">Découvrez le projet<i class="fas fa-angle-double-right"></i></a>
         </div>
       <?php endforeach; ?>
     <?php endif; ?>

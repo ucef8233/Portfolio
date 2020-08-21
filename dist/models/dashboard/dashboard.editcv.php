@@ -1,44 +1,10 @@
 <?php
 // namece use
-
-use \portfolio\classes\Database\Utulisateur;
-use portfolio\classes\Database\Functions;
 use portfolio\classes\HTML\Error;
 use \portfolio\classes\HTML\Form;
 
-$types = ['softskills', 'experiances', 'etudes', 'langages'];
-$projets = new Utulisateur;
-$result = Functions::editProfil('info_admin');
-
-// foreach ($types as $type) :
-//   $softskills = $projets->selectCv("info_admin", "softskills");
-// endforeach;
-
-$softskills = $projets->selectCv("info_admin", "softskills");
-$experiances = $projets->selectCv("info_admin", "experiances");
-$etudes = $projets->selectCv("info_admin", "etudes");
-$langages = $projets->selectCv("info_admin", "langages");
 
 
-Functions::insertCv('experiances');
-Functions::insertCv('softskills');
-Functions::insertCv('etudes');
-Functions::insertCv('langages');
-
-if (isset($_GET['type'])) :
-  if ($_GET['type'] == "softskills") :
-    Functions::delet("softskills", "id_softskills");
-  endif;
-  if ($_GET['type'] == "experiances") :
-    Functions::delet("experiances", "id_experiance");
-  endif;
-  if ($_GET['type'] == "etudes") :
-    Functions::delet("etudes", "id_etude");
-  endif;
-  if ($_GET['type'] == "langages") :
-    Functions::delet("langages", "id_langage");
-  endif;
-endif;
 ?>
 <div class="content">
   <div class="container-fluid">
@@ -54,13 +20,13 @@ endif;
           <div class="card-body">
             <form method="POST">
               <div class="row">
-                <input type="text" class="x" name="id_admin" value="<?= $result['id_admin'] ?>" required>
-                <?= Form::input("5", "Nom", "nom_user", $result['nom']) ?>
-                <?= Form::input("3", "Titre", "titre_user", $result['titre']) ?>
-                <?= Form::input("4", "Email", "mail_user", $result['mail']) ?>
+                <input type="text" class="x" name="id_admin" value="<?= $infos[0]['id_admin'] ?>" required>
+                <?= Form::input("5", "Nom", "nom_user", $infos[0]['nom']) ?>
+                <?= Form::input("3", "Titre", "titre_user", $infos[0]['titre']) ?>
+                <?= Form::input("4", "Email", "mail_user", $infos[0]['mail']) ?>
               </div>
               <div class="row">
-                <?= Form::input("12", "Adress", "adress_user", $result['adress']) ?>
+                <?= Form::input("12", "Adress", "adress_user", $infos[0]['adress']) ?>
                 <button type="submit" name="editprofil" class="btn btn-primary pull-right">Update Profile</button>
               </div>
             </form>

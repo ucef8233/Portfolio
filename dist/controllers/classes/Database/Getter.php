@@ -6,10 +6,12 @@ namespace portfolio\classes\Database;
 /**
  * @param Functions $id id select id user 
  */
-class Functions
+class Getter extends Crud
 {
+  private $table_name;
+
   // fonction d'ajout d'utulisateur'
-  public static function insert($table_user)
+  public static function get_create()
   {
     if (isset($_POST['add'])) :
       $nom = addslashes($_POST['projet_name']);
@@ -22,19 +24,20 @@ class Functions
         'lien' =>  $lien,
         'description' => $description
       ];
-      $utulisateurs = new Utulisateur;
-      $result = $utulisateurs->selectOne($nom, $table_user, 'nom');
+      $projet = new Crud('projet');
+      $result = $projet->selectOne($nom, 'nom');
       if ($result) :
         header("location:dashboard.php?p=add&error=exist");
       else :
-        $utulisateurs->insert($table_user, $champs);
+        $projet = new Crud('projet');
+        $projet->set_create($champs);
       endif;
     endif;
   }
-  /////////insertcv
-  public static function insertCv($table_name)
+  ///////insertcv
+  public static function get_createCv($table_name)
   {
-    if ((isset($_POST['add_cv'])) && ($table_name == "experiance")) :
+    if ((isset($_POST['add_cv'])) && ($table_name == "experiances")) :
       $date = addslashes($_POST['experiance_date']);
       $description =  addslashes($_POST['experiance_desc']);
       $champs = [
@@ -42,8 +45,8 @@ class Functions
         'description' =>  $description,
         'info_admin' => "1"
       ];
-      $utulisateurs = new Utulisateur;
-      $utulisateurs->insert($table_name, $champs);
+      $cv = new Crud($table_name);
+      $cv->set_create($champs);
     endif;
     if ((isset($_POST['add_etude'])) && ($table_name == "etudes")) :
       $date = addslashes($_POST['etude_date']);
@@ -53,8 +56,8 @@ class Functions
         'description' =>  $description,
         'info_admin' => "1"
       ];
-      $utulisateurs = new Utulisateur;
-      $utulisateurs->insert($table_name, $champs);
+      $cv = new Crud($table_name);
+      $cv->set_create($champs);
     endif;
     if ((isset($_POST['add_langage'])) && ($table_name == "langages")) :
       $langage =  addslashes($_POST['langage']);
@@ -62,8 +65,8 @@ class Functions
         'langage' => $langage,
         'info_admin' => "1"
       ];
-      $utulisateurs = new Utulisateur;
-      $utulisateurs->insert($table_name, $champs);
+      $cv = new Crud($table_name);
+      $cv->set_create($champs);
     endif;
     if ((isset($_POST['add_softskills'])) && ($table_name == "softskills")) :
       $softskills =  addslashes($_POST['softskills']);
@@ -71,17 +74,17 @@ class Functions
         'softskills' => $softskills,
         'info_admin' => "1"
       ];
-      $utulisateurs = new Utulisateur;
-      $utulisateurs->insert($table_name, $champs);
+      $cv = new Crud($table_name);
+      $cv->set_create($champs);
     endif;
   }
-  /// fonction de supretion d'utulisateur 
-  public static function delet($table_name, $id_table)
+  /// fonction de supretion projet
+  public static function get_delet($table_name, $where): void
   {
     if (isset($_GET['id'])) :
       $id = $_GET['id'];
-      $utulisateur = new Utulisateur;
-      $utulisateur->delet($id, $table_name, $id_table);
+      $projet = new Crud($table_name);
+      $projet->set_delete($id, $where);
       if ($table_name == "projet") :
         header('location:dashboard.php');
       else :
@@ -89,18 +92,17 @@ class Functions
       endif;
     endif;
   }
-  public static function edit($table_name)
+  public static function get_update()
   {
-    $id = new Utulisateur;
+    // $id = new Utulisateur;
     $projetId = $_GET['id'];
     if (!$projetId) :
       header('location:dashboard.php?p=404');
     endif;
-    $utulisateurs = new Utulisateur;
-    $result = $utulisateurs->selectOne($projetId, $table_name, 'id');
+    $projet = new Crud('projet');
+    $result = $projet->selectOne($projetId, 'id');
     if (isset($_POST['edit'])) :
       $nom = addslashes($_POST['projet_name']);
-      // $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
       $lien = $_POST['projet_lien'];
       $image = $_POST['projet_image'];
       $description = addslashes($_POST['projet_description']);
@@ -111,15 +113,12 @@ class Functions
         'description' => $description
       ];
       $id = $_POST['id'];
-      $utulisateur = new Utulisateur;
-      $utulisateur->update($table_name, $champs, $id);
+      $projet->set_update($champs, $id);
     endif;
     return $result;
   }
-  public static function editProfil($table_name)
+  public static function get_updateCv()
   {
-    $utulisateurs = new Utulisateur;
-    $result = $utulisateurs->selectOne("1", $table_name, 'id_admin');
     if (isset($_POST['editprofil'])) :
       $nom = addslashes($_POST['nom_user']);
       $titre =  addslashes($_POST['titre_user']);
@@ -130,12 +129,10 @@ class Functions
         'titre' => $titre,
         'mail' => $mail,
         'adress' => $adress
-
       ];
       $id = $_POST['id_admin'];
-      $utulisateur = new Utulisateur;
-      $utulisateur->updateProfil($table_name, $champs, $id);
+      $projet = new Crud('info_admin');
+      $projet->set_update($champs, $id);
     endif;
-    return $result;
   }
 }

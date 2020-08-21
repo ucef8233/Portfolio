@@ -2,15 +2,23 @@
 
 namespace portfolio\classes\Database;
 
-class Connexion_exec
+use \PDO;
+
+class Connexion_exec extends Db
 {
-  public static function Cnx()
+  private static function get_Cnx($table_name): array
+  {
+    $sql = 'SELECT * FROM ' . $table_name . '';
+    $stmt = self::connect()->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result;
+  }
+  public static function set_Cnx()
   {
     if (isset($_POST['connexion'])) :
-
       $login = $_POST['username'];
-      $connexion = new Utulisateur;
-      $result = $connexion->connectadmin("info_admin");
+      $result = self::get_Cnx('info_admin');
       $_SESSION['log'] = $result;
       if ($result) :
         if (($_POST['password'] === $result['mdp']) && ($login === $result['login'])) :

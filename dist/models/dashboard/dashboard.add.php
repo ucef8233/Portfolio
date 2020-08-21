@@ -1,10 +1,9 @@
 <?php
 ///require manmespace use
-use \portfolio\classes\Database\Functions;
+
 use \portfolio\classes\HTML\Error;
 use \portfolio\classes\HTML\Form;
 
-Functions::insert('projet');
 ?>
 <div class="content">
   <div class="container-fluid">

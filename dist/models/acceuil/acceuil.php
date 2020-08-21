@@ -6,4 +6,6 @@ $title = 'Page D\'acceuil';
 ?>
 <?php require  INC_PATH . '/header.php' ?>
 <?php require  INC_PATH . '/portfolio.php' ?>
-<?php require  INC_PATH . '/cv.php' ?>
+<?php
+require  INC_PATH . '/cv.php'
+?>
