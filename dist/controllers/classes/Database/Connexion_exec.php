@@ -18,7 +18,7 @@ class Connexion_exec extends Db
   {
     if (isset($_POST['connexion'])) :
       $login = $_POST['username'];
-      $result = self::get_Cnx('info_admin');
+      $result = self::get_All('info_admin');
       $_SESSION['log'] = $result;
       if ($result) :
         if (($_POST['password'] === $result['mdp']) && ($login === $result['login'])) :
